@@ -19,90 +19,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: activePage === 'posts' }" @click.prevent="setPage('posts')">Posts</a>
+              <router-link class="nav-link" active-class="active" to="/">Posts</router-link>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" :class="{ active: activePage === 'users' }" @click.prevent="setPage('users')" >Users</a>
+              <router-link class="nav-link" active-class="active" to="/users">Users</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     
-    <template v-if="activePage === 'posts'">
-      <header class="container-fluid row bg-light py-5">
-        <div class="row">
-          <div class="col">
-            <h1 class="display-2">Posts</h1>
-          </div>
-        </div>
-      </header>
-      <section class="container py-5">
-        <article class="row">
-          <div class="col-6" v-for="post in posts">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4 bg-secondary" style="height: 200px">
-                 
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="#" @click.prevent="setPage('post', post.id)">{{ post.title }}</a></h5>
-                    <p class="card-text">{{ post.body }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-    </template>
-
-    <template v-if="activePage === 'users'">
-      <header class="container-fluid row bg-light py-5">
-        <div class="row">
-          <div class="col">
-            <h1 class="display-2">Users</h1>
-          </div>
-        </div>
-      </header>
-      <section class="container py-5">
-        <article class="row">
-          <div class="col-6" v-for="user in users">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4 bg-secondary" style="height: 200px">
-                 
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ user.name }}</h5>
-                    <p class="card-text">{{ user.email }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-    </template>
-
-    <template v-if="activePage === 'post'">
-      <header class="container-fluid row bg-light py-5">
-        <div class="row">
-          <div class="col">
-            <h1 class="display-2">{{ post.title }}</h1>
-          </div>
-        </div>
-      </header>
-      <section class="container py-5">
-        <article class="row">
-          <div class="col">
-            <p>{{ post.body }}</p>
-          </div>
-        </article>
-      </section>
-    </template>
+    <router-view></router-view>
   </div>
 
   <script src="app.js"></script>
