@@ -1,2 +1,4 @@
-# mtm6404-blog
-This repository contains the starter files for the Blog example
+# Blog
+
+## Objective
+Use Vue, Vue Router and the [JSON Placeholder API](https://jsonplaceholder.typicode.com/) to create a mock blog. 
