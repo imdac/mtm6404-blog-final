@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/vue-router@4"></script>  
+</head>
+<body>
+  <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="#" class="nav-link" :class="{ active: activePage === 'posts' }" @click.prevent="setPage('posts')">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" :class="{ active: activePage === 'users' }" @click.prevent="setPage('users')" >Users</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <template v-if="activePage === 'posts'">
+      <header class="container-fluid row bg-light py-5">
+        <div class="row">
+          <div class="col">
+            <h1 class="display-2">Posts</h1>
+          </div>
+        </div>
+      </header>
+      <section class="container py-5">
+        <article class="row">
+          <div class="col-6" v-for="post in posts">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 bg-secondary" style="height: 200px">
+                 
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="#" @click.prevent="setPage('post', post.id)">{{ post.title }}</a></h5>
+                    <p class="card-text">{{ post.body }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template v-if="activePage === 'users'">
+      <header class="container-fluid row bg-light py-5">
+        <div class="row">
+          <div class="col">
+            <h1 class="display-2">Users</h1>
+          </div>
+        </div>
+      </header>
+      <section class="container py-5">
+        <article class="row">
+          <div class="col-6" v-for="user in users">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4 bg-secondary" style="height: 200px">
+                 
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ user.name }}</h5>
+                    <p class="card-text">{{ user.email }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </template>
+
+    <template v-if="activePage === 'post'">
+      <header class="container-fluid row bg-light py-5">
+        <div class="row">
+          <div class="col">
+            <h1 class="display-2">{{ post.title }}</h1>
+          </div>
+        </div>
+      </header>
+      <section class="container py-5">
+        <article class="row">
+          <div class="col">
+            <p>{{ post.body }}</p>
+          </div>
+        </article>
+      </section>
+    </template>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
